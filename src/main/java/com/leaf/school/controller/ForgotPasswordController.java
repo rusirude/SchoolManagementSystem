@@ -18,7 +18,7 @@ public class ForgotPasswordController {
 	
 	@RequestMapping(value = "/forgotPassword",method = RequestMethod.GET)
 	public String getForgotPassword(ModelMap model){
-		return "ForgotPassword";
+		return "forgotPassword";
 	}
 	
 	@RequestMapping(value = "/forgotPassword/checkUser/{username}",method = RequestMethod.GET)
@@ -27,7 +27,7 @@ public class ForgotPasswordController {
 		AjaxResponseDTO response = null;		
 		response = sysUserService.checkUserAvailability(username);		
 		model.addAttribute(response);
-		return "ForgotPassword";
+		return "jsonResponse";
 	}
 	
 	@RequestMapping(value = "/forgotPassword/getSecurityQuactions/{username}",method = RequestMethod.GET)

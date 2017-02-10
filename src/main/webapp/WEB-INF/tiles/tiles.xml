@@ -3,31 +3,38 @@
 
 <tiles-definitions>
 
-    <!-- Base Definition -->
-    <definition name="base-definition" template="/WEB-INF/tiles/layouts/default.jsp">
+    <!-- Dash Board Definition -->
+    <definition name="dashboard-definition" template="/WEB-INF/tiles/layouts/default.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/tiles/layouts/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/tiles/layouts/menu.jsp" />
+        <put-attribute name="header" value="/WEB-INF/tiles/layouts/defaultHeader.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/tiles/layouts/defaultMenu.jsp" />
         <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/tiles/layouts/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/layouts/defaultFooter.jsp" />
     </definition>
 
-    <!-- Home Page
-    <definition name="home" extends="base-definition">
-        <put-attribute name="title" value="Welcome" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/home.jsp" />
+    <!-- Welcome Definition -->
+    <definition name="welcome-definition" template="/WEB-INF/tiles/layouts/default.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/tiles/layouts/defaultHeader.jsp" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/layouts/defaultFooter.jsp" />
     </definition>
 
-    <!-- Product Page
-    <definition name="products" extends="base-definition">
-        <put-attribute name="title" value="Products" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/products.jsp" />
+
+
+    <!--Welcome Page-->
+
+    <definition name="welcome" extends="welcome-definition">
+        <put-attribute name="title" value="Leaf-Welcome"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/Welcome.jsp"/>
     </definition>
 
-    <!-- Contact-us Page
-    <definition name="contactus" extends="base-definition">
-        <put-attribute name="title" value="Contact Us" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/contactus.jsp" />
-    </definition>  -->
+    <!--Forgot Password-->
+
+    <definition name="forgotPassword" extends="welcome-definition">
+        <put-attribute name="title" value="Leaf-Welcome"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/ForgotPassword.jsp"/>
+    </definition>
 
 </tiles-definitions>

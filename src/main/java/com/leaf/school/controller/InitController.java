@@ -26,14 +26,14 @@ public class InitController {
 	
 	@RequestMapping(value="/",method = RequestMethod.GET)
 	public String getInit(ModelMap model){	
-		return "Welcome";
+		return "welcome";
 	}
 	@RequestMapping(value="/welcome",method = RequestMethod.GET)
-	public String getWelcome(ModelMap model){	
+	public String getWelcome(ModelMap model){
 		AjaxResponseDTO response = null;
 		response = sysUsereService.getSecurityQuactionsForUser("admin");
 		model.addAttribute(response);
-		return "Welcome";
+		return "welcome";
 	}
 
 }

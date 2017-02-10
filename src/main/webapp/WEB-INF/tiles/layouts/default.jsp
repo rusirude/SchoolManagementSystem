@@ -1,16 +1,33 @@
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%--
-  Created by IntelliJ IDEA.
-  User: Rusiru
-  Date: 29-Jan-17
-  Time: 7:08 PM
-  To change this template use File | Settings | File Templates.
+ @Author : Rusiru De Silva
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>
+    <tiles:getAsString name="title"/>
+  </title>
+  <link href="resources/css/icon.css" rel="stylesheet">
+  <link rel="stylesheet" href="resources/css/materialize.min.css">
+  <script type="text/javascript" src="resources/js/config/jquery-3.1.1.min.js"></script>
+  <script src="resources/js/config/materialize.min.js"></script>
+
 </head>
 <body>
-
+<header>
+  <tiles:insertAttribute name="header"/>
+</header>
+<section>
+  <tiles:insertAttribute name="menu"/>
+</section>
+<section>
+  <tiles:insertAttribute name="body"/>
+</section>
+<footer>
+  <tiles:insertAttribute name="footer"/>
+</footer>
 </body>
 </html>
