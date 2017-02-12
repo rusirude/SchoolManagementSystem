@@ -10,7 +10,7 @@ import javax.persistence.TemporalType;
 
 @MappedSuperclass
 public class BaseEntity implements Serializable{	
-	private static final long serialVersionUID = -1286660927076925572L;
+
 	
 	private String addedBy; 
 	private Date addedOn;		

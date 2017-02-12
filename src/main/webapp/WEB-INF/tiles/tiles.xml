@@ -4,7 +4,7 @@
 <tiles-definitions>
 
     <!-- Dash Board Definition -->
-    <definition name="dashboard-definition" template="/WEB-INF/tiles/layouts/default.jsp">
+    <definition name="dashboard-definition" template="/WEB-INF/tiles/layouts/defaultDashboard.jsp">
         <put-attribute name="title" value="" />
         <put-attribute name="header" value="/WEB-INF/tiles/layouts/defaultHeader.jsp" />
         <put-attribute name="menu" value="/WEB-INF/tiles/layouts/defaultMenu.jsp" />
@@ -13,10 +13,9 @@
     </definition>
 
     <!-- Welcome Definition -->
-    <definition name="welcome-definition" template="/WEB-INF/tiles/layouts/default.jsp">
+    <definition name="welcome-definition" template="/WEB-INF/tiles/layouts/defaultWelcome.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/tiles/layouts/defaultHeader.jsp" />
-        <put-attribute name="menu" value="" />
+        <put-attribute name="header" value="" />
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/tiles/layouts/defaultFooter.jsp" />
     </definition>
@@ -26,15 +25,21 @@
     <!--Welcome Page-->
 
     <definition name="welcome" extends="welcome-definition">
-        <put-attribute name="title" value="Leaf-Welcome"/>
+        <put-attribute name="title" value="Leaf|Welcome"/>
         <put-attribute name="body" value="/WEB-INF/jsp/Welcome.jsp"/>
     </definition>
 
     <!--Forgot Password-->
 
     <definition name="forgotPassword" extends="welcome-definition">
-        <put-attribute name="title" value="Leaf-Welcome"/>
+        <put-attribute name="title" value="Leaf|Forgot Password"/>
         <put-attribute name="body" value="/WEB-INF/jsp/ForgotPassword.jsp"/>
+    </definition>
+
+    <!-- Sys Role-->
+    <definition name="userRole" extends="dashboard-definition">
+        <put-attribute name="title" value="Leaf|User Role"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/SysRole.jsp"/>
     </definition>
 
 </tiles-definitions>

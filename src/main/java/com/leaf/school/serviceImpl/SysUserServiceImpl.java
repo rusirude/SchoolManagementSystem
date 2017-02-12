@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.leaf.school.dao.SysUserDAO;
-import com.leaf.school.dto.AjaxResponseDTO;
+import com.leaf.school.dto.common.AjaxResponseDTO;
 import com.leaf.school.dto.SecurityQuestionDTO;
 import com.leaf.school.dto.SysUserDTO;
 import com.leaf.school.service.SysUserService;

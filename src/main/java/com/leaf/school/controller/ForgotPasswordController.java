@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.leaf.school.dto.AjaxResponseDTO;
+import com.leaf.school.dto.common.AjaxResponseDTO;
 import com.leaf.school.service.SysUserService;
 
 @Controller
@@ -17,7 +17,7 @@ public class ForgotPasswordController {
 	SysUserService sysUserService;
 	
 	@RequestMapping(value = "/forgotPassword",method = RequestMethod.GET)
-	public String getForgotPassword(ModelMap model){
+	public String viewForgotPassword(ModelMap model){
 		return "forgotPassword";
 	}
 	

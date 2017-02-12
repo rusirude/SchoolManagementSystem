@@ -4,9 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class BaseDTO implements Serializable{
-
 	
-	private static final long serialVersionUID = -8092344070071475948L;
+
 	private String addedBy; 
 	private Date addedOn;		
 	private String updatedBy;

@@ -12,7 +12,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.leaf.school.dto.AjaxResponseDTO;
+import com.leaf.school.dto.common.AjaxResponseDTO;
 import com.leaf.school.service.SysRoleService;
 import com.leaf.school.service.SysUserService;
 
@@ -25,11 +25,11 @@ public class InitController {
 	SysUserService sysUsereService;
 	
 	@RequestMapping(value="/",method = RequestMethod.GET)
-	public String getInit(ModelMap model){	
+	public String getInit(){
 		return "welcome";
 	}
 	@RequestMapping(value="/welcome",method = RequestMethod.GET)
-	public String getWelcome(ModelMap model){
+	public String viewWelcome(ModelMap model){
 		AjaxResponseDTO response = null;
 		response = sysUsereService.getSecurityQuactionsForUser("admin");
 		model.addAttribute(response);

@@ -7,12 +7,10 @@ package com.leaf.school.daoImpl;
 import java.util.List;
 
 import com.leaf.school.Utility.CommonUtility;
+import com.leaf.school.dto.common.DataTableRequestDTO;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Property;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +18,8 @@ import com.leaf.school.dao.BaseDAO;
 import com.leaf.school.dao.SysRoleDAO;
 import com.leaf.school.dto.SysRoleDTO;
 import com.leaf.school.entity.SysRoleEntity;
-import org.springframework.transaction.annotation.Transactional;
+
+
 
 
 @Repository("sysRoleDAO")
@@ -123,6 +122,60 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 		}
 
 		return sysRoles;
+	}
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<SysRoleDTO> getAllRoles(DataTableRequestDTO dataTableRequestDTO){
+		List<SysRoleDTO> sysRoles = null;
+		try {
+			Session session = getSession();
+			Criteria criteria = session.createCriteria(SysRoleEntity.class)
+					.setFirstResult(dataTableRequestDTO.getStart()-1)
+					.setMaxResults(dataTableRequestDTO.getLength());
+			Projection projection = Projections
+					.projectionList()
+					.add(Property.forName("id").as("id"))
+					.add(Property.forName("name").as("name"))
+					.add(Property.forName("description").as("description"))
+					.add(Property.forName("addedBy").as("addedBy"))
+					.add(Property.forName("addedOn").as("addedOn"))
+					.add(Property.forName("updatedBy").as("updatedBy"))
+					.add(Property.forName("updatedOn").as("updatedOn"));
+
+			criteria.setProjection(projection);
+			Order order = null;
+			if (dataTableRequestDTO.getSortOrder().equals("asc")) {
+				order = Order.asc(dataTableRequestDTO.getSortColumnName());
+			} else if (dataTableRequestDTO.getSortOrder().equals("desc")) {
+				order = Order.desc(dataTableRequestDTO.getSortColumnName());
+			}
+			criteria.addOrder(order);
+
+			sysRoles = criteria.setResultTransformer(Transformers.aliasToBean(SysRoleDTO.class)).list();
+		}
+		catch (Exception e){
+
+		}
+
+		return sysRoles;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public Integer getRowCount(DataTableRequestDTO dataTableRequestDTO){
+		Integer rowCount = 0;
+		try {
+			Session session = getSession();
+			Criteria criteria = session.createCriteria(SysRoleEntity.class)
+					.setProjection(Projections.count("id"));
+			Long value = (Long) criteria.uniqueResult();
+			rowCount = Integer.valueOf(value.intValue());
+
+		}
+		catch (Exception e){
+			rowCount = 0;
+		}
+		return rowCount;
 	}
 
 }

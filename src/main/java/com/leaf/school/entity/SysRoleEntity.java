@@ -19,23 +19,19 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "sys_role")
-public class SysRoleEntity {	
+public class SysRoleEntity extends BaseEntity{
 
-	private int id; 
+	private Integer id;
 	private String name;
-	private String description; 
-	private String addedBy; 
-	private Date addedOn;		
-	private String updatedBy;
-	private Date updatedOn;
+	private String description;
 	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	@Column(name = "name", nullable = false)
@@ -52,38 +48,6 @@ public class SysRoleEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@Column(name = "added_by",nullable = false )
-	public String getAddedBy() {
-		return addedBy;
-	}
-	public void setAddedBy(String addedBy) {
-		this.addedBy = addedBy;
-	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "added_on", nullable = false)
-	public Date getAddedOn() {
-		return addedOn;
-	}
-	public void setAddedOn(Date addedOn) {
-		this.addedOn = addedOn;
-	}
-	@Column(name = "updaed_by", nullable = true)
-	public String getUpdatedBy() {
-		return updatedBy;
-	}
-	public void setUpdatedBy(String updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "updated_on", nullable = true)
-	public Date getUpdatedOn() {
-		return updatedOn;
-	}
-	public void setUpdatedOn(Date updatedOn) {
-		this.updatedOn = updatedOn;
-	} 
-	
-	
-	
+
 	
 }

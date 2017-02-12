@@ -1,10 +1,10 @@
 <%--
 @Author : Rusiru De Silva
 --%>
-<div class="row">
-	<div class="col s1 m3 l3">
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--1-col-phone mdl-cell--3-col-tablet mdl-cell--3-col-desktop">
 	</div>
-	<div class="col s12 m6 l6">
+	<div class="mdl-cell mdl-cell--12-col-phone mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
 		<div class="col s12 m12 l12 z-depth-3" style="margin-right: 20px;margin-top: 100px">
 			<form class="col s12 m12 l12">
 				<div class="row">
@@ -46,7 +46,7 @@
 			</form>
 		</div>
 	</div>
-	<div class="col s1 m3 l3">
+	<div class="mdl-cell mdl-cell--1-col-phone mdl-cell--3-col-tablet mdl-cell--3-col-desktop">
 	</div>
 </div>
 

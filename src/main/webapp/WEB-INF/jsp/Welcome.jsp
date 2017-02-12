@@ -1,41 +1,41 @@
-
-
-<div class="row">
-	<div class="col s12 m8 l8">
+<%--
+ @Author : Rusiru De Silva
+--%>
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--12-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop">
 		<div>
 			<img style="margin: 20px;height: auto;width: auto" src="resources/image/leafLogo.png">
 		</div>
 	</div>
-	<div class="col s12 m4 l4">
-		<div class="col s12 m12 l12 z-depth-3" style="margin-right: 20px;margin-top: 100px">
-			<form class="col s12 m12 l12">
-				<div class="row">
-					<div class="input-field col s12">
-					  <i class="medium material-icons prefix">perm_identity</i>
-					  <input id="f_username" name="username" type="text" class="validate" placeholder="Username">
+	<div class="mdl-cell mdl-cell--12-col-phone mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
+		<div class="mdl-cell mdl-cell--12-col">
+			<form class="mdl-cell mdl-cell--12-col">
+				<div class="mdl-grid">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+						<input id="f_username" name="username" type="text" class="mdl-textfield__input">
+						<label class="mdl-textfield__label" for="f_username"><!--span><i class="medium material-icons prefix">perm_identity</i></span-->Username</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="input-field col s12">
-					  <i class="medium material-icons prefix">lock_outline</i>
-					  <input id="f_password" name="password" type="password" class="validate" placeholder="Password">
+				<div class="mdl-grid">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+						<input id="f_password" name="password" type="password" class="mdl-textfield__input">
+						<label class="mdl-textfield__label" for="f_password"><!--span><i class="medium material-icons prefix">lock_outline</i></span-->Password</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="input-field col s12">
-						<p>
-							<input id="f_rememberMe" type="checkbox" name="rememberMe" value="true">
-							<label for="f_rememberMe">Remember Me</label>
-						</p>
+				<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--12-col">
+						<label class="mdl-checkbox mdl-js-checkbox" for="f_rememberMe">
+							<input type="checkbox" id="f_rememberMe" class="mdl-checkbox__input" name="rememberMe" value="true">
+							<span class="mdl-checkbox__label">Remember Me</span>
+						</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col s12 m5 l5">
-						<button class="btn waves-effect waves-teal green accent-4">Login</button>
+				<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--12-col-phone mdl-cell--5-col-tablet mdl-cell--5-col-desktop">
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--accent">Login</button>
 					</div>
-					<div class="col s12 m2 l2"><br></div>
-					<div class="col s12 m5 l5">
-						<button type="button" onclick="location.href='forgotPassword'" class="btn waves-effect waves-teal green accent-4">Forgot Password</button>
+					<div class="mdl-cell mdl-cell--12-col-phone mdl-cell--5-col-tablet mdl-cell--5-col-desktop">
+						<button type="button" onclick="location.href='forgotPassword'" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect  mdl-button--accent">Forgot Password</button>
 					</div>
 				</div>
 			</form>

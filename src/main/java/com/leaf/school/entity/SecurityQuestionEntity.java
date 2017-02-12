@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class SecurityQuestionEntity extends BaseEntity{
 	
 
-	private static final long serialVersionUID = 4507641873303874036L;
+
 	private Integer id;
 	private String question;
 	

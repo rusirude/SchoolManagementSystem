@@ -1,16 +1,10 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Rusiru
-  Date: 29-Jan-17
-  Time: 7:10 PM
-  To change this template use File | Settings | File Templates.
+ @Author : Rusiru De Silva
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">Title</div>
+    <ul class="mdl-mini-footer__link-list">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Privacy & Terms</a></li>
+    </ul>
+</div>

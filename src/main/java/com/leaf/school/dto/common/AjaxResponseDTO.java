@@ -1,4 +1,4 @@
-package com.leaf.school.dto;
+package com.leaf.school.dto.common;
 
 import java.io.Serializable;
 

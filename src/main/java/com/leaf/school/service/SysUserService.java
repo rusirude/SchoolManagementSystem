@@ -2,7 +2,7 @@ package com.leaf.school.service;
 
 import java.util.List;
 
-import com.leaf.school.dto.AjaxResponseDTO;
+import com.leaf.school.dto.common.AjaxResponseDTO;
 import com.leaf.school.dto.SysUserDTO;
 
 public interface SysUserService {
