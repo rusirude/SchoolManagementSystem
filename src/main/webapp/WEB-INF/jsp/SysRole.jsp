@@ -7,6 +7,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Status</th>
             <th>Added By</th>
             <th>Added On</th>
             <th>Updated By</th>
@@ -18,6 +19,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Status</th>
             <th>Added By</th>
             <th>Added On</th>
             <th>Updated By</th>

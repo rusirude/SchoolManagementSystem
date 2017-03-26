@@ -1,4 +1,10 @@
 package com.leaf.school.dto;
+/**
+ *@Author : Rusiru De Silva
+ */
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.leaf.school.Utility.CommonConstant;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,9 +12,11 @@ import java.util.Date;
 public class BaseDTO implements Serializable{
 	
 
-	private String addedBy; 
+	private String addedBy;
+	@JsonFormat(pattern = CommonConstant.DATE_FORMATE)
 	private Date addedOn;		
 	private String updatedBy;
+	@JsonFormat(pattern = CommonConstant.DATE_FORMATE)
 	private Date updatedOn;
 	
 	

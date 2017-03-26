@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.leaf.school.Utility.CommonUtility;
 import com.leaf.school.dto.common.DataTableRequestDTO;
+import com.leaf.school.entity.StatusEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.*;
@@ -30,9 +31,11 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 		boolean isInsert = false;
 		try{
 			Session session = getSession();
+			StatusEntity statusEntity = (StatusEntity)    session.load(StatusEntity.class,sysRoleDTO.getStatusId());
 			SysRoleEntity sysRoleEntity = new SysRoleEntity();
 			sysRoleEntity.setName(sysRoleDTO.getName());
 			sysRoleEntity.setDescription(sysRoleDTO.getDescription());
+			sysRoleEntity.setStatus(statusEntity);
 			sysRoleEntity.setAddedBy(sysRoleDTO.getAddedBy());
 			sysRoleEntity.setAddedOn(CommonUtility.getCurrentTimeStamp());
 			session.save(sysRoleEntity);
@@ -46,20 +49,25 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 		return isInsert;
 	}
 	@Override
+	@SuppressWarnings("unchecked")
 	public boolean update(SysRoleDTO sysRoleDTO){
 		boolean isUpdated = false;
 		try{
 			Session session = getSession();
-			SysRoleEntity sysRoleEntity = (SysRoleEntity) session.get(SysRoleEntity.class,sysRoleDTO.getId());
+			SysRoleEntity sysRoleEntity = (SysRoleEntity) session.get(SysRoleEntity.class, sysRoleDTO.getId());
+			StatusEntity statusEntity = (StatusEntity)    session.load(StatusEntity.class,sysRoleDTO.getStatusId());
 			session.evict(sysRoleEntity);
 			sysRoleEntity.setName(sysRoleDTO.getName());
 			sysRoleEntity.setDescription(sysRoleDTO.getDescription());
+			sysRoleEntity.setStatus(statusEntity);
 			sysRoleEntity.setUpdatedBy(sysRoleDTO.getUpdatedBy());
 			sysRoleEntity.setUpdatedOn(CommonUtility.getCurrentTimeStamp());
+			session.update(sysRoleEntity);
 			session.flush();
 			isUpdated = true;
 		}
 		catch (Exception e){
+			System.out.println(e);
 			isUpdated = false;
 		}
 		return isUpdated;
@@ -103,12 +111,15 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 		List<SysRoleDTO> sysRoles = null;
 		try {
 			Session session = getSession();
-			Criteria criteria = session.createCriteria(SysRoleEntity.class);
+			Criteria criteria = session.createCriteria(SysRoleEntity.class)
+					.createAlias("status", "status");;
 			Projection projection = Projections
 					.projectionList()
 					.add(Property.forName("id").as("id"))
 					.add(Property.forName("name").as("name"))
 					.add(Property.forName("description").as("description"))
+					.add(Property.forName("status.id").as("statusId"))
+					.add(Property.forName("status.code").as("statusCode"))
 					.add(Property.forName("addedBy").as("addedBy"))
 					.add(Property.forName("addedOn").as("addedOn"))
 					.add(Property.forName("updatedBy").as("updatedBy"))
@@ -130,13 +141,16 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 		try {
 			Session session = getSession();
 			Criteria criteria = session.createCriteria(SysRoleEntity.class)
-					.setFirstResult(dataTableRequestDTO.getStart()-1)
-					.setMaxResults(dataTableRequestDTO.getLength());
+					.setFirstResult(dataTableRequestDTO.getStart() - 1)
+					.setMaxResults(dataTableRequestDTO.getLength())
+					.createAlias("status", "status");
 			Projection projection = Projections
 					.projectionList()
 					.add(Property.forName("id").as("id"))
 					.add(Property.forName("name").as("name"))
 					.add(Property.forName("description").as("description"))
+					.add(Property.forName("status.id").as("statusId"))
+					.add(Property.forName("status.code").as("statusCode"))
 					.add(Property.forName("addedBy").as("addedBy"))
 					.add(Property.forName("addedOn").as("addedOn"))
 					.add(Property.forName("updatedBy").as("updatedBy"))
@@ -154,7 +168,7 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 			sysRoles = criteria.setResultTransformer(Transformers.aliasToBean(SysRoleDTO.class)).list();
 		}
 		catch (Exception e){
-
+			System.out.println(e);
 		}
 
 		return sysRoles;

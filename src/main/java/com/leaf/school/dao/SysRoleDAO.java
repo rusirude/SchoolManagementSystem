@@ -16,6 +16,7 @@ public interface SysRoleDAO {
 	boolean delete(SysRoleDTO sysRoleDTO);
 	SysRoleDTO find(SysRoleDTO sysRoleDTO);
 	List<SysRoleDTO> getAllRoles();
+
 	List<SysRoleDTO> getAllRoles(DataTableRequestDTO dataTableGeideDTO);
 	Integer getRowCount(DataTableRequestDTO dataTableRequestDTO);
 

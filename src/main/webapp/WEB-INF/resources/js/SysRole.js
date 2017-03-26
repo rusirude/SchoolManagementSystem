@@ -26,6 +26,7 @@ function mainDataTable(){
                             { data: "id",               name:"id" },
                             { data: "name",             name:"name"},
                             { data: "description",      name:"description"},
+                            { data: "statusCode",       name:"status"},
                             { data: "addedBy",          name:"addedBy" },
                             { data: "addedOn",          name:"addedOn" },
                             { data: "updatedBy",        name:"updatedBy" },

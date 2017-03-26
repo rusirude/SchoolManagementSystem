@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "sys_user_question")
+@Table(name = "user_management.sys_user_question")
 public class SysUserQuestionEntity extends BaseEntity{
 	
 	private static final long serialVersionUID = 3002301926704054590L;

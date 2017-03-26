@@ -1,5 +1,7 @@
 package com.leaf.school.controller;
 
+import com.leaf.school.dto.SysRoleDTO;
+import com.leaf.school.dto.common.AjaxResponseDTO;
 import com.leaf.school.dto.common.DataTableRequestDTO;
 import com.leaf.school.dto.common.DataTableResponseDTO;
 import com.leaf.school.service.SysRoleService;
@@ -22,13 +24,24 @@ public class SysRoleController {
     SysRoleService sysRoleService;
 
     @RequestMapping(value="/userRole",method = RequestMethod.GET)
-    public String viewUserRole(){
+    public String viewSysRole(){
         return  "userRole";
     }
 
     @RequestMapping(value="/loadUserRoleForGrid",method = RequestMethod.POST)
     @ResponseBody
-    public DataTableResponseDTO loadUserRole(@RequestBody DataTableRequestDTO dataTableRequestDTO){
+    public DataTableResponseDTO loadSysRole(@RequestBody DataTableRequestDTO dataTableRequestDTO){
        return sysRoleService.getRolesForDataTable(dataTableRequestDTO);
+    }
+
+    @RequestMapping(value = "/saveSysRole",method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResponseDTO saveSysRole(@RequestBody SysRoleDTO sysRoleDTO){
+        return sysRoleService.saveSysRole(sysRoleDTO);
+    }
+    @RequestMapping(value = "/updateSysRole",method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxResponseDTO updateSysRole(@RequestBody SysRoleDTO sysRoleDTO){
+        return sysRoleService.updateSysRole(sysRoleDTO);
     }
 }

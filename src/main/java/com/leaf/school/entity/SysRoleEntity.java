@@ -6,24 +6,17 @@ package com.leaf.school.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
+import javax.persistence.*;
 
 
 @Entity
-@Table(name = "sys_role")
+@Table(name = "user_management.sys_role")
 public class SysRoleEntity extends BaseEntity{
 
 	private Integer id;
 	private String name;
 	private String description;
+	private StatusEntity status;
 	
 	
 	@Id
@@ -48,6 +41,13 @@ public class SysRoleEntity extends BaseEntity{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "status")
+	public StatusEntity getStatus() {
+		return status;
+	}
 
-	
+	public void setStatus(StatusEntity status) {
+		this.status = status;
+	}
 }

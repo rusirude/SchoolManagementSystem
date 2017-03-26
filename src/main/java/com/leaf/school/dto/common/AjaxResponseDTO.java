@@ -1,3 +1,6 @@
+/**
+ * @Author : Rusiru De Silva
+ */
 package com.leaf.school.dto.common;
 
 import java.io.Serializable;
@@ -6,14 +9,14 @@ public class AjaxResponseDTO implements Serializable{
 
 	private static final long serialVersionUID = -10550238447776990L;
 	
-	private boolean isValid;
+	private String code;
 	private String errorMsg;
 	private Object obj;
-	public boolean isValid() {
-		return isValid;
+	public String getCode() {
+		return code;
 	}
-	public void setValid(boolean isValid) {
-		this.isValid = isValid;
+	public void setCode(String code) {
+		this.code = code;
 	}
 	public String getErrorMsg() {
 		return errorMsg;
@@ -27,6 +30,9 @@ public class AjaxResponseDTO implements Serializable{
 	public void setObj(Object obj) {
 		this.obj = obj;
 	}
-	
-	
+
+	public AjaxResponseDTO(String code, String errorMsg) {
+		this.code = code;
+		this.errorMsg = errorMsg;
+	}
 }

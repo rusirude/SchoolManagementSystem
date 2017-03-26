@@ -38,16 +38,16 @@ public class SysUserServiceImpl implements SysUserService {
 			 * 2,3... multiple user fond (2,3,..number of users)*/
 			users = sysUserDAO.getUserByUsername(user);
 			
-			response = new AjaxResponseDTO();
+			response = new AjaxResponseDTO("","");
 			response.setErrorMsg("Success");
 			response.setObj(new Integer(users.size()));
-			response.setValid(true);
+			response.setCode("");
 		}
 		catch(Exception e){
-			response = new AjaxResponseDTO();
+			response = new AjaxResponseDTO("","");
 			response.setErrorMsg("Server Error");
 			response.setObj(new Integer(-1));
-			response.setValid(false);
+			response.setCode("");
 			e.printStackTrace();
 		}
 		
@@ -63,15 +63,15 @@ public class SysUserServiceImpl implements SysUserService {
 		user.setUsername(username);		
 		try{
 			questions = sysUserDAO.getSecurityQuactionByUsername(user);
-			response = new AjaxResponseDTO();
+			response = new AjaxResponseDTO("","");
 			response.setErrorMsg("Success");
 			response.setObj(questions);
-			response.setValid(true);
+			response.setCode("");
 		}
 		catch(Exception e){
-			response = new AjaxResponseDTO();
+			response = new AjaxResponseDTO("","");
 			response.setErrorMsg("Server Error");			
-			response.setValid(false);
+			response.setCode("");
 			e.printStackTrace();
 		}
 		return response;
