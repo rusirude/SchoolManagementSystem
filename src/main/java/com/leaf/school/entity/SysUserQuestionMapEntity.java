@@ -6,8 +6,8 @@ package com.leaf.school.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_management.sys_user_question")
-public class SysUserQuestionEntity extends BaseEntity {
+@Table(name = "user_management.sys_user_question_map")
+public class SysUserQuestionMapEntity extends BaseEntity {
 
 
     private SysUserQuestionEntityId id;
@@ -19,9 +19,8 @@ public class SysUserQuestionEntity extends BaseEntity {
     @EmbeddedId
     @AttributeOverrides({
             @AttributeOverride(name = "username", column = @Column(name = "username", nullable = false)),
-            @AttributeOverride(name = "questionId", column = @Column(name = "question_id", nullable = false))
-    }
-    )
+            @AttributeOverride(name = "question", column = @Column(name = "question", nullable = false))
+    })
     public SysUserQuestionEntityId getId() {
         return id;
     }
@@ -41,7 +40,7 @@ public class SysUserQuestionEntity extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "question", referencedColumnName = "id", insertable = false, updatable = false)
     public SecurityQuestionEntity getQuestionEntity() {
         return questionEntity;
     }

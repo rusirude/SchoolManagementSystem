@@ -19,7 +19,7 @@ import com.leaf.school.dao.SysUserDAO;
 import com.leaf.school.dto.SecurityQuestionDTO;
 import com.leaf.school.dto.SysUserDTO;
 import com.leaf.school.entity.SysUserEntity;
-import com.leaf.school.entity.SysUserQuestionEntity;
+import com.leaf.school.entity.SysUserQuestionMapEntity;
 @Repository("SysUserDAO")
 public class SysUserDAOImpl extends BaseDAO implements SysUserDAO{
 
@@ -58,7 +58,7 @@ public class SysUserDAOImpl extends BaseDAO implements SysUserDAO{
 		List<SecurityQuestionDTO> questions = null;
 		String username = user.getUsername();
 		Session session = getSession();
-		Criteria criteria = session.createCriteria(SysUserQuestionEntity.class)
+		Criteria criteria = session.createCriteria(SysUserQuestionMapEntity.class)
 			.add(Restrictions.eq("id.username",username))
 			.createAlias("questionEntity", "questionEntity");
 		Projection projection = Projections

@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class SysUserQuestionEntityId implements Serializable {
 
     private String username;
-    private Integer questionId;
+    private Integer question;
 
     @Column(name = "username", nullable = false)
     public String getUsername() {
@@ -22,13 +22,13 @@ public class SysUserQuestionEntityId implements Serializable {
         this.username = username;
     }
 
-    @Column(name = "question_id", nullable = false)
-    public Integer getQuestionId() {
-        return questionId;
+    @Column(name = "question", nullable = false)
+    public Integer getQuestion() {
+        return question;
     }
 
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
+    public void setQuestion(Integer question) {
+        this.question = question;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class SysUserQuestionEntityId implements Serializable {
                 + ((username == null) ? 0 : username.hashCode());
         result = prime
                 * result
-                + ((questionId == null) ? 0 : questionId.hashCode());
+                + ((question == null) ? 0 : question.hashCode());
 
         return result;
     }
@@ -63,11 +63,11 @@ public class SysUserQuestionEntityId implements Serializable {
         } else if (!username.equals(other.username)) {
             return false;
         }
-        if (questionId == null) {
-            if (other.questionId != null) {
+        if (question == null) {
+            if (other.question != null) {
                 return false;
             }
-        } else if (!questionId.equals(other.questionId)) {
+        } else if (!question.equals(other.question)) {
             return false;
         }
 

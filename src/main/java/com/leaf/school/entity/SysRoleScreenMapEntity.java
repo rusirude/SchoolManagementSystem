@@ -1,5 +1,4 @@
 package com.leaf.school.entity;
-
 /**
  * @Author : Rusiru De Silva
  */
@@ -7,35 +6,24 @@ package com.leaf.school.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_management.sys_user_role_map")
-public class SysUserRoleMapEntity extends BaseEntity {
-
-    private SysUserRoleMapEntityId id;
-    private SysUserEntity sysUserEntity;
+@Table(name = "user_management.sys_role_screen_map")
+public class SysRoleScreenMapEntity extends BaseEntity {
+    private SysRoleScreenMapEntityId id;
     private SysRoleEntity sysRoleEntity;
+    private SysScreenEntity sysScreenEntity;
     private StatusEntity statusEntity;
 
     @EmbeddedId
     @AttributeOverrides({
-            @AttributeOverride(name = "username", column = @Column(name = "username", nullable = false)),
-            @AttributeOverride(name = "role", column = @Column(name = "role", nullable = false))
+            @AttributeOverride(name = "role", column = @Column(name = "role", nullable = false)),
+            @AttributeOverride(name = "screen", column = @Column(name = "screem", nullable = false))
     })
-    public SysUserRoleMapEntityId getId() {
+    public SysRoleScreenMapEntityId getId() {
         return id;
     }
 
-    public void setId(SysUserRoleMapEntityId id) {
+    public void setId(SysRoleScreenMapEntityId id) {
         this.id = id;
-    }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
-    public SysUserEntity getSysUserEntity() {
-        return sysUserEntity;
-    }
-
-    public void setSysUserEntity(SysUserEntity sysUserEntity) {
-        this.sysUserEntity = sysUserEntity;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,6 +34,16 @@ public class SysUserRoleMapEntity extends BaseEntity {
 
     public void setSysRoleEntity(SysRoleEntity sysRoleEntity) {
         this.sysRoleEntity = sysRoleEntity;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "screen", referencedColumnName = "id", insertable = false, updatable = false)
+    public SysScreenEntity getSysScreenEntity() {
+        return sysScreenEntity;
+    }
+
+    public void setSysScreenEntity(SysScreenEntity sysScreenEntity) {
+        this.sysScreenEntity = sysScreenEntity;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -7,19 +7,10 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class SysUserRoleMapEntityId {
+public class SysRoleScreenMapEntityId {
 
-    private String username;
     private Integer role;
-
-    @Column(name = "username", nullable = false)
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    private Integer screen;
 
     @Column(name = "role", nullable = false)
     public Integer getRole() {
@@ -30,15 +21,24 @@ public class SysUserRoleMapEntityId {
         this.role = role;
     }
 
+    @Column(name = "screen", nullable = false)
+    public Integer getScreen() {
+        return screen;
+    }
+
+    public void setScreen(Integer screen) {
+        this.screen = screen;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((username == null) ? 0 : username.hashCode());
+                + ((role == null) ? 0 : role.hashCode());
         result = prime
                 * result
-                + ((role == null) ? 0 : role.hashCode());
+                + ((screen == null) ? 0 : screen.hashCode());
 
         return result;
     }
@@ -54,19 +54,19 @@ public class SysUserRoleMapEntityId {
         if (!(obj instanceof SysUserQuestionEntityId)) {
             return false;
         }
-        SysUserRoleMapEntityId other = (SysUserRoleMapEntityId) obj;
-        if (username == null) {
-            if (other.username != null) {
-                return false;
-            }
-        } else if (!username.equals(other.username)) {
-            return false;
-        }
+        SysRoleScreenMapEntityId other = (SysRoleScreenMapEntityId) obj;
         if (role == null) {
             if (other.role != null) {
                 return false;
             }
         } else if (!role.equals(other.role)) {
+            return false;
+        }
+        if (screen == null) {
+            if (other.screen != null) {
+                return false;
+            }
+        } else if (!screen.equals(other.screen)) {
             return false;
         }
 
