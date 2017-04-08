@@ -13,7 +13,7 @@ public class SysRoleEntity extends BaseEntity {
     private Integer id;
     private String name;
     private String description;
-    private StatusEntity status;
+    private StatusEntity statusEntity;
 
 
     @Id
@@ -46,11 +46,11 @@ public class SysRoleEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status", nullable = false)
-    public StatusEntity getStatus() {
-        return status;
+    public StatusEntity getStatusEntity() {
+        return statusEntity;
     }
 
-    public void setStatus(StatusEntity status) {
-        this.status = status;
+    public void setStatusEntity(StatusEntity statusEntity) {
+        this.statusEntity = statusEntity;
     }
 }

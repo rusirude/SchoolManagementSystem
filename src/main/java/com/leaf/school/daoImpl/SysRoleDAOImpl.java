@@ -35,7 +35,7 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 			SysRoleEntity sysRoleEntity = new SysRoleEntity();
 			sysRoleEntity.setName(sysRoleDTO.getName());
 			sysRoleEntity.setDescription(sysRoleDTO.getDescription());
-			sysRoleEntity.setStatus(statusEntity);
+			sysRoleEntity.setStatusEntity(statusEntity);
 			sysRoleEntity.setAddedBy(sysRoleDTO.getAddedBy());
 			sysRoleEntity.setAddedOn(CommonUtility.getCurrentTimeStamp());
 			session.save(sysRoleEntity);
@@ -59,7 +59,7 @@ public class SysRoleDAOImpl extends BaseDAO implements SysRoleDAO{
 			session.evict(sysRoleEntity);
 			sysRoleEntity.setName(sysRoleDTO.getName());
 			sysRoleEntity.setDescription(sysRoleDTO.getDescription());
-			sysRoleEntity.setStatus(statusEntity);
+			sysRoleEntity.setStatusEntity(statusEntity);
 			sysRoleEntity.setUpdatedBy(sysRoleDTO.getUpdatedBy());
 			sysRoleEntity.setUpdatedOn(CommonUtility.getCurrentTimeStamp());
 			session.update(sysRoleEntity);

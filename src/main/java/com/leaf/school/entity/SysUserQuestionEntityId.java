@@ -10,8 +10,6 @@ import java.io.Serializable;
 @Embeddable
 public class SysUserQuestionEntityId implements Serializable {
 
-    private static final long serialVersionUID = 8807741909464898031L;
-
     private String username;
     private Integer questionId;
 

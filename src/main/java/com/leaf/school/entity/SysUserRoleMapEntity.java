@@ -1,4 +1,5 @@
 package com.leaf.school.entity;
+
 /**
  * @Author : Rusiru De Silva
  */
@@ -6,27 +7,25 @@ package com.leaf.school.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_management.sys_user_question")
-public class SysUserQuestionEntity extends BaseEntity {
+@Table(name = "user_management.sys_user_role_map")
+public class SysUserRoleMapEntity extends BaseEntity {
 
-
-    private SysUserQuestionEntityId id;
+    private SysUserRoleMapEntityId id;
     private SysUserEntity sysUserEntity;
-    private SecurityQuestionEntity questionEntity;
+    private SysRoleEntity sysRoleEntity;
     private StatusEntity statusEntity;
-    private String answer;
 
     @EmbeddedId
     @AttributeOverrides({
             @AttributeOverride(name = "username", column = @Column(name = "username", nullable = false)),
-            @AttributeOverride(name = "questionId", column = @Column(name = "question_id", nullable = false))
+            @AttributeOverride(name = "role", column = @Column(name = "role", nullable = false))
     }
     )
-    public SysUserQuestionEntityId getId() {
+    public SysUserRoleMapEntityId getId() {
         return id;
     }
 
-    public void setId(SysUserQuestionEntityId id) {
+    public void setId(SysUserRoleMapEntityId id) {
         this.id = id;
     }
 
@@ -41,13 +40,13 @@ public class SysUserQuestionEntity extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_id", referencedColumnName = "id", insertable = false, updatable = false)
-    public SecurityQuestionEntity getQuestionEntity() {
-        return questionEntity;
+    @JoinColumn(name = "role", referencedColumnName = "id", insertable = false, updatable = false)
+    public SysRoleEntity getSysRoleEntity() {
+        return sysRoleEntity;
     }
 
-    public void setQuestionEntity(SecurityQuestionEntity questionEntity) {
-        this.questionEntity = questionEntity;
+    public void setSysRoleEntity(SysRoleEntity sysRoleEntity) {
+        this.sysRoleEntity = sysRoleEntity;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -59,15 +58,4 @@ public class SysUserQuestionEntity extends BaseEntity {
     public void setStatusEntity(StatusEntity statusEntity) {
         this.statusEntity = statusEntity;
     }
-
-    @Column(name = "answer", nullable = false)
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-
 }

@@ -5,7 +5,8 @@ package com.leaf.school.entity;
 
 import javax.persistence.*;
 
-
+@Entity
+@Table(name = "user_management.sys_screen")
 public class SysScreenEntity extends BaseEntity {
 
     private Integer id;
@@ -13,7 +14,7 @@ public class SysScreenEntity extends BaseEntity {
     private String url;
     private Integer level;
     private SysScreenEntity parent;
-    private StatusEntity status;
+    private StatusEntity statusEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,11 +65,11 @@ public class SysScreenEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status", nullable = false)
-    public StatusEntity getStatus() {
-        return status;
+    public StatusEntity getStatusEntity() {
+        return statusEntity;
     }
 
-    public void setStatus(StatusEntity status) {
-        this.status = status;
+    public void setStatusEntity(StatusEntity statusEntity) {
+        this.statusEntity = statusEntity;
     }
 }

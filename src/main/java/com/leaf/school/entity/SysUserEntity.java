@@ -12,7 +12,7 @@ public class SysUserEntity extends BaseEntity {
     private String username;
     private String password;
     private String name;
-    private StatusEntity status;
+    private StatusEntity statusEntity;
     private String firstLogin;
 
 
@@ -46,12 +46,12 @@ public class SysUserEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status", nullable = false)
-    public StatusEntity getStatus() {
-        return status;
+    public StatusEntity getStatusEntity() {
+        return statusEntity;
     }
 
-    public void setStatus(StatusEntity status) {
-        this.status = status;
+    public void setStatusEntity(StatusEntity statusEntity) {
+        this.statusEntity = statusEntity;
     }
 
     @Column(name = "first_login", nullable = false)

@@ -12,7 +12,7 @@ public class SecurityQuestionEntity extends BaseEntity {
 
     private Integer id;
     private String question;
-    private StatusEntity status;
+    private StatusEntity statusEntity;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,11 +35,11 @@ public class SecurityQuestionEntity extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status", nullable = false)
-    public StatusEntity getStatus() {
-        return status;
+    public StatusEntity getStatusEntity() {
+        return statusEntity;
     }
 
-    public void setStatus(StatusEntity status) {
-        this.status = status;
+    public void setStatusEntity(StatusEntity statusEntity) {
+        this.statusEntity = statusEntity;
     }
 }
