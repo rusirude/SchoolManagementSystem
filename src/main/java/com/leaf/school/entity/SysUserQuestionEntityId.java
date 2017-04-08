@@ -1,7 +1,7 @@
-/**
- * @author : Rusiru De Silva
- */
 package com.leaf.school.entity;
+/**
+ * @Author : Rusiru De Silva
+ */
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

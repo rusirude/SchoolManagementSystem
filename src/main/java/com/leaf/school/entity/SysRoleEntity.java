@@ -1,8 +1,7 @@
+package com.leaf.school.entity;
 /**
  * @Author : Rusiru De Silva
  */
-
-package com.leaf.school.entity;
 
 import javax.persistence.*;
 
@@ -46,7 +45,7 @@ public class SysRoleEntity extends BaseEntity {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status")
+    @JoinColumn(name = "status", nullable = false)
     public StatusEntity getStatus() {
         return status;
     }

@@ -1,7 +1,7 @@
+package com.leaf.school.entity;
 /**
  * @Author : Rusiru De Silva
  */
-package com.leaf.school.entity;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
