@@ -1,15 +1,14 @@
+/**
+ * @Author : Rusiru De Silva
+ */
 package com.leaf.school.entity;
 
 import javax.persistence.*;
 
-/**
- *@Author : Rusiru De Silva
- */
-
 
 @Entity
 @Table(name = "master_data.status")
-public class StatusEntity extends BaseEntity{
+public class StatusEntity extends BaseEntity {
 
     private Integer id;
     private String code;
@@ -25,6 +24,7 @@ public class StatusEntity extends BaseEntity{
     public void setId(Integer id) {
         this.id = id;
     }
+
     @Column(name = "code", nullable = false)
     public String getCode() {
         return code;
@@ -33,6 +33,7 @@ public class StatusEntity extends BaseEntity{
     public void setCode(String code) {
         this.code = code;
     }
+
     @Column(name = "description", nullable = true)
     public String getDescripion() {
         return descripion;
@@ -41,6 +42,7 @@ public class StatusEntity extends BaseEntity{
     public void setDescripion(String descripion) {
         this.descripion = descripion;
     }
+
     @Column(name = "is_active", nullable = false)
     public Integer getIsActive() {
         return isActive;
