@@ -1,10 +1,11 @@
 package com.leaf.school.entity;
-
-import javax.persistence.*;
-
 /**
  * @Author : Rusiru De Silva
  */
+
+import javax.persistence.*;
+
+
 public class SysScreenEntity extends BaseEntity {
 
     private Integer id;
