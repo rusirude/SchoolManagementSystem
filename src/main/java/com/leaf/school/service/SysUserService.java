@@ -9,6 +9,6 @@ public interface SysUserService {
 	
 	public List<SysUserDTO> getAllUsers();
 	public AjaxResponseDTO checkUserAvailability(String username);
-	public AjaxResponseDTO getSecurityQuactionsForUser(String username);
+	public AjaxResponseDTO getSecurityQuestionsForUser(String username);
 
 }

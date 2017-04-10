@@ -5,9 +5,10 @@ package com.leaf.school.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class SysUserRoleMapEntityId {
+public class SysUserRoleMapEntityId implements Serializable {
 
     private String username;
     private Integer role;

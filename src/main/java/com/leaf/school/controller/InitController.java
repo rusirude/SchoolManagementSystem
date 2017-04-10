@@ -31,7 +31,7 @@ public class InitController {
 	@RequestMapping(value="/welcome",method = RequestMethod.GET)
 	public String viewWelcome(ModelMap model){
 		AjaxResponseDTO response = null;
-		response = sysUsereService.getSecurityQuactionsForUser("admin");
+		response = sysUsereService.getSecurityQuestionsForUser("admin");
 		model.addAttribute(response);
 		return "welcome";
 	}

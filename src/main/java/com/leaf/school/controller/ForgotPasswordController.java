@@ -34,7 +34,7 @@ public class ForgotPasswordController {
 	public String getSecurityQuactionsForUser(@PathVariable String username,ModelMap model){	 
 		
 		AjaxResponseDTO response = null;		
-		response = sysUserService.getSecurityQuactionsForUser(username);		
+		response = sysUserService.getSecurityQuestionsForUser(username);
 		model.addAttribute(response);
 		return "ForgotPassword";
 	}

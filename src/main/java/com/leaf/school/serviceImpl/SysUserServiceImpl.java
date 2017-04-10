@@ -29,7 +29,7 @@ public class SysUserServiceImpl implements SysUserService {
 	public AjaxResponseDTO checkUserAvailability(String username) {
 		AjaxResponseDTO response = null;
 		SysUserDTO user = new SysUserDTO();
-		List<SysUserDTO> users = null;
+		SysUserDTO users = null;
 		user.setUsername(username);
 		try{
 			/*-1 for server Error,
@@ -39,13 +39,13 @@ public class SysUserServiceImpl implements SysUserService {
 			users = sysUserDAO.getUserByUsername(user);
 			
 			response = new AjaxResponseDTO("","");
-			response.setErrorMsg("Success");
-			response.setObj(new Integer(users.size()));
+			response.setMessage("Success");
+			//response.setObj(new Integer(users.size()));
 			response.setCode("");
 		}
 		catch(Exception e){
 			response = new AjaxResponseDTO("","");
-			response.setErrorMsg("Server Error");
+			response.setMessage("Server Error");
 			response.setObj(new Integer(-1));
 			response.setCode("");
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class SysUserServiceImpl implements SysUserService {
 	
 	@Override
 	@Transactional
-	public AjaxResponseDTO getSecurityQuactionsForUser(String username){
+	public AjaxResponseDTO getSecurityQuestionsForUser(String username){
 		AjaxResponseDTO response = null;
 		SysUserDTO user = new SysUserDTO();
 		List<SecurityQuestionDTO> questions = null;
@@ -64,13 +64,13 @@ public class SysUserServiceImpl implements SysUserService {
 		try{
 			questions = sysUserDAO.getSecurityQuactionByUsername(user);
 			response = new AjaxResponseDTO("","");
-			response.setErrorMsg("Success");
+			response.setMessage("Success");
 			response.setObj(questions);
 			response.setCode("");
 		}
 		catch(Exception e){
 			response = new AjaxResponseDTO("","");
-			response.setErrorMsg("Server Error");			
+			response.setMessage("Server Error");
 			response.setCode("");
 			e.printStackTrace();
 		}

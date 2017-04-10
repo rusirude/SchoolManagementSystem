@@ -6,10 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.leaf.school.dto.session.Session;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.web.accept.ContentNegotiationManager;
@@ -66,6 +65,12 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 		TilesViewResolver resolver = new TilesViewResolver();
 		resolver.setContentType("text/html");
 		return resolver;
+	}
+
+	@Bean
+	@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+	public Session session(){
+		return new Session();
 	}
 
 	@Bean
