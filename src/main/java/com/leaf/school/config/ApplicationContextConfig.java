@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages  = "com.leaf.school")
+@ComponentScan(basePackages  = "com.leaf.school.*")
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 	
 	public void configureContentNegotiation(ContentNegotiationConfigurer contentNegotiationConfigurer){
@@ -77,12 +77,15 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {	
-		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");		
+		registry.addResourceHandler("/resources/**")
+				.addResourceLocations("/WEB-INF/resources/")
+				.addResourceLocations("/resources/");
 	
 	}
 

@@ -7,13 +7,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_management.sys_user")
-public class SysUserEntity extends BaseEntity {
+public class
+SysUserEntity extends BaseEntity {
 
     private String username;
     private String password;
     private String name;
     private StatusEntity statusEntity;
     private String firstLogin;
+    private String passwordResetRequested;
 
 
     @Id
@@ -63,5 +65,12 @@ public class SysUserEntity extends BaseEntity {
         this.firstLogin = firstLogin;
     }
 
+    @Column(name = "password_reset_requested", nullable = false)
+    public String getPasswordResetRequested() {
+        return passwordResetRequested;
+    }
 
+    public void setPasswordResetRequested(String passwordResetRequested) {
+        this.passwordResetRequested = passwordResetRequested;
+    }
 }

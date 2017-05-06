@@ -12,7 +12,8 @@ public class StatusEntity extends BaseEntity {
 
     private Integer id;
     private String code;
-    private String descripion;
+    private String description;
+    private StatusCategoryEntity statusCategoryEntity;
     private Integer isActive;
 
     @Id
@@ -35,12 +36,22 @@ public class StatusEntity extends BaseEntity {
     }
 
     @Column(name = "description", nullable = true)
-    public String getDescripion() {
-        return descripion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripion(String descripion) {
-        this.descripion = descripion;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category", nullable = false)
+    public StatusCategoryEntity getStatusCategoryEntity() {
+        return statusCategoryEntity;
+    }
+
+    public void setStatusCategoryEntity(StatusCategoryEntity statusCategoryEntity) {
+        this.statusCategoryEntity = statusCategoryEntity;
     }
 
     @Column(name = "is_active", nullable = false)

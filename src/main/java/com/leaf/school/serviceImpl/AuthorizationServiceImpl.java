@@ -4,6 +4,7 @@ package com.leaf.school.serviceImpl;
  */
 
 import com.leaf.school.Utility.CommonConstant;
+import com.leaf.school.Utility.Encryptor;
 import com.leaf.school.dao.SysUserDAO;
 import com.leaf.school.dto.SysUserDTO;
 import com.leaf.school.dto.common.AjaxResponseDTO;
@@ -21,26 +22,39 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     Session session;
     @Autowired
     SysUserDAO sysUserDAO;
+    @Autowired
+    Encryptor encryptor;
 
     @Override
     @Transactional
     public AjaxResponseDTO login(SysUserDTO sysUserDTO) {
         String code = ResponseCodeEnum.ERROR.getCode();
         String message = "";
+        Object obj = null;
         try {
             SysUserDTO userDTO = sysUserDAO.getUserByUsername(sysUserDTO);
             switch (userDTO.getStatusCode()) {
                 case CommonConstant.ACTIVE:
+                    if (userDTO.getPassword().equals(encryptor.getHashCode(sysUserDTO.getPassword())) & "Y".equals(userDTO.getFirstLogin())) {
+                        session.setUsername(userDTO.getUsername());
+                        code = ResponseCodeEnum.SUCCESS.getCode();
+                        message = CommonConstant.LOGIN_SUCCESS;
+                    } else if (userDTO.getPassword().equals(encryptor.getHashCode(sysUserDTO.getPassword()))) {
+                        session.setUsername(userDTO.getUsername());
+                        code = ResponseCodeEnum.SUCCESS.getCode();
+                        message = CommonConstant.LOGIN_SUCCESS;
+                    } else {
+                        message = CommonConstant.LOGIN_FAILD;
+                    }
                     break;
                 case CommonConstant.DEACT:
+                    message = CommonConstant.LOGIN_SUCCESS_LOCK;
                     break;
             }
-            session.setUsername(userDTO.getUsername());
-            code = ResponseCodeEnum.SUCCESS.getCode();
         } catch (Exception e) {
-
+            System.out.println(e);
         }
-        return new AjaxResponseDTO(code, "login Success");
+        return new AjaxResponseDTO(code, message);
     }
 
     @Override
@@ -49,4 +63,5 @@ public class AuthorizationServiceImpl implements AuthorizationService {
         session.setUsername(null);
         return new AjaxResponseDTO("SUCCESS", "logout Success");
     }
+
 }

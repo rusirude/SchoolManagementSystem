@@ -14,5 +14,11 @@ public class CommonConstant {
     public static final String DEACT = "DEACT";
     public static final String DELETE = "DELETE";
 
+    /*Authentication messages*/
+
+    public static final String LOGIN_SUCCESS = "LOGIN_SUCCESS";
+    public static final String LOGIN_FAILD = "LOGIN_FAILD";
+    public static final String LOGIN_SUCCESS_LOCK = "LOIN_SUCCESS_LOCK";
+
 
 }

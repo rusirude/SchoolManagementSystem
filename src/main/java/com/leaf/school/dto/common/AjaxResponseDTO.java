@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 public class AjaxResponseDTO implements Serializable {
 
-    private static final long serialVersionUID = -10550238447776990L;
-
     private String code;
     private String message;
     private Object obj;
@@ -37,8 +35,24 @@ public class AjaxResponseDTO implements Serializable {
         this.obj = obj;
     }
 
+    public AjaxResponseDTO(String code) {
+        this.code = code;
+    }
+
     public AjaxResponseDTO(String code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    public AjaxResponseDTO(String code, String message, Object obj) {
+        this.code = code;
+        this.message = message;
+        this.obj = obj;
+    }
+
+    public AjaxResponseDTO(String code, Object obj) {
+        this.code = code;
+        this.obj = obj;
+        this.message = "";
     }
 }

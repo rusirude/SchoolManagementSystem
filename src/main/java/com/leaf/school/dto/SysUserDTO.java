@@ -10,6 +10,7 @@ public class SysUserDTO extends BaseDTO {
     private String password;
     private String name;
     private String statusCode;
+    private String statusDescription;
     private String firstLogin;
 
     public String getUsername() {
@@ -42,6 +43,14 @@ public class SysUserDTO extends BaseDTO {
 
     public void setStatusCode(String statusCode) {
         this.statusCode = statusCode;
+    }
+
+    public String getStatusDescription() {
+        return statusDescription;
+    }
+
+    public void setStatusDescription(String statusDescription) {
+        this.statusDescription = statusDescription;
     }
 
     public String getFirstLogin() {
