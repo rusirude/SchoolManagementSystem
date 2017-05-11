@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "user_management.sys_role")
 public class SysRoleEntity extends BaseEntity {
 
-    private Integer id;
+    private Long id;
     private String name;
     private String description;
     private StatusEntity statusEntity;
@@ -18,11 +18,11 @@ public class SysRoleEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

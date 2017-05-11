@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class SysUserRoleMapEntityId implements Serializable {
 
     private String username;
-    private Integer role;
+    private Long role;
 
     @Column(name = "username", nullable = false)
     public String getUsername() {
@@ -23,11 +23,11 @@ public class SysUserRoleMapEntityId implements Serializable {
     }
 
     @Column(name = "role", nullable = false)
-    public Integer getRole() {
+    public Long getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(Long role) {
         this.role = role;
     }
 
@@ -52,7 +52,7 @@ public class SysUserRoleMapEntityId implements Serializable {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof SysUserQuestionEntityId)) {
+        if (!(obj instanceof SysUserQuestionMapEntityId)) {
             return false;
         }
         SysUserRoleMapEntityId other = (SysUserRoleMapEntityId) obj;

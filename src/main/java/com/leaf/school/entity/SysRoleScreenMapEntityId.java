@@ -10,24 +10,24 @@ import java.io.Serializable;
 @Embeddable
 public class SysRoleScreenMapEntityId implements Serializable {
 
-    private Integer role;
-    private Integer screen;
+    private Long role;
+    private Long screen;
 
     @Column(name = "role", nullable = false)
-    public Integer getRole() {
+    public Long getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(Long role) {
         this.role = role;
     }
 
     @Column(name = "screen", nullable = false)
-    public Integer getScreen() {
+    public Long getScreen() {
         return screen;
     }
 
-    public void setScreen(Integer screen) {
+    public void setScreen(Long screen) {
         this.screen = screen;
     }
 
@@ -52,7 +52,7 @@ public class SysRoleScreenMapEntityId implements Serializable {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof SysUserQuestionEntityId)) {
+        if (!(obj instanceof SysUserQuestionMapEntityId)) {
             return false;
         }
         SysRoleScreenMapEntityId other = (SysRoleScreenMapEntityId) obj;

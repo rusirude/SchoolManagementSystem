@@ -22,74 +22,71 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages  = "com.leaf.school.*")
-public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
-	
-	public void configureContentNegotiation(ContentNegotiationConfigurer contentNegotiationConfigurer){
-		contentNegotiationConfigurer.favorPathExtension(true).ignoreAcceptHeader(true)
-				.useJaf(false).defaultContentType(MediaType.TEXT_HTML)
-				.mediaType("html", MediaType.TEXT_HTML)
-				.mediaType("xml", MediaType.APPLICATION_XML)
-				.mediaType("json", MediaType.APPLICATION_JSON);
-	}
+@ComponentScan(basePackages = "com.leaf.school.*")
+public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 
-	@Bean
-	public ViewResolver contentNegotiationViewResolver(ContentNegotiationManager contentNegotiationManager){
-		ContentNegotiatingViewResolver cnvr = new ContentNegotiatingViewResolver();
-		cnvr.setContentNegotiationManager(contentNegotiationManager);
+    public void configureContentNegotiation(ContentNegotiationConfigurer contentNegotiationConfigurer) {
+        contentNegotiationConfigurer.favorPathExtension(true).ignoreAcceptHeader(true)
+                .useJaf(false).defaultContentType(MediaType.TEXT_HTML)
+                .mediaType("html", MediaType.TEXT_HTML)
+                .mediaType("xml", MediaType.APPLICATION_XML)
+                .mediaType("json", MediaType.APPLICATION_JSON);
+    }
 
-		List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
-		resolvers.add(getTilesViewResolver());
-		//resolvers.add(jsonViewResolver());
+    @Bean
+    public ViewResolver contentNegotiationViewResolver(ContentNegotiationManager contentNegotiationManager) {
+        ContentNegotiatingViewResolver cnvr = new ContentNegotiatingViewResolver();
+        cnvr.setContentNegotiationManager(contentNegotiationManager);
 
-		cnvr.setViewResolvers(resolvers);
-		return cnvr;
+        List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
+        resolvers.add(getTilesViewResolver());
+        //resolvers.add(jsonViewResolver());
 
-	}
+        cnvr.setViewResolvers(resolvers);
+        return cnvr;
 
-	@Bean
-	public ViewResolver jsonViewResolver() {
-		return new JsonViewResolver();
-	}
+    }
+
+    @Bean
+    public ViewResolver jsonViewResolver() {
+        return new JsonViewResolver();
+    }
 
 
-	@Bean(name = "tilesConfigurer")
-	public TilesConfigurer getTilesConfigurer() {
-		TilesConfigurer configurer = new TilesConfigurer();
-		String[] tilesDefFiles = { "/WEB-INF/**/tiles.xml"};
-		configurer.setDefinitions(tilesDefFiles);
-		return configurer;
-	}
+    @Bean(name = "tilesConfigurer")
+    public TilesConfigurer getTilesConfigurer() {
+        TilesConfigurer configurer = new TilesConfigurer();
+        String[] tilesDefFiles = {"/WEB-INF/**/tiles.xml"};
+        configurer.setDefinitions(tilesDefFiles);
+        return configurer;
+    }
 
-	private ViewResolver getTilesViewResolver() {
-		TilesViewResolver resolver = new TilesViewResolver();
-		resolver.setContentType("text/html");
-		return resolver;
-	}
+    private ViewResolver getTilesViewResolver() {
+        TilesViewResolver resolver = new TilesViewResolver();
+        resolver.setContentType("text/html");
+        return resolver;
+    }
 
-	@Bean
-	@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
-	public Session session(){
-		return new Session();
-	}
+    @Bean
+    @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public Session session() {
+        return new Session();
+    }
 
-	@Bean
+    @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-	
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {	
-		registry.addResourceHandler("/resources/**")
-				.addResourceLocations("/WEB-INF/resources/")
-				.addResourceLocations("/resources/");
-	
-	}
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/WEB-INF/resources/")
+                .addResourceLocations("/resources/");
+    }
 
-	
 
 }

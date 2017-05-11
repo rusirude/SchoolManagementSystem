@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name = "master_data.status")
 public class StatusEntity extends BaseEntity {
 
-    private Integer id;
+    private Long id;
     private String code;
     private String description;
     private StatusCategoryEntity statusCategoryEntity;
@@ -18,11 +18,11 @@ public class StatusEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

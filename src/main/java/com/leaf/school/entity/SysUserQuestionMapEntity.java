@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class SysUserQuestionMapEntity extends BaseEntity {
 
 
-    private SysUserQuestionEntityId id;
+    private SysUserQuestionMapEntityId id;
     private SysUserEntity sysUserEntity;
     private SecurityQuestionEntity questionEntity;
     private StatusEntity statusEntity;
@@ -21,11 +21,11 @@ public class SysUserQuestionMapEntity extends BaseEntity {
             @AttributeOverride(name = "username", column = @Column(name = "username", nullable = false)),
             @AttributeOverride(name = "question", column = @Column(name = "question", nullable = false))
     })
-    public SysUserQuestionEntityId getId() {
+    public SysUserQuestionMapEntityId getId() {
         return id;
     }
 
-    public void setId(SysUserQuestionEntityId id) {
+    public void setId(SysUserQuestionMapEntityId id) {
         this.id = id;
     }
 

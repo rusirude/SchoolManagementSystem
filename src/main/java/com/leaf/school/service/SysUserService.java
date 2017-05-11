@@ -7,8 +7,8 @@ import com.leaf.school.dto.SysUserDTO;
 
 public interface SysUserService {
 	
-	public AjaxResponseDTO getAllActiveUsers();
-	public AjaxResponseDTO checkUserAvailability(String username);
-	public AjaxResponseDTO getSecurityQuestionsForUser(String username);
+//	public AjaxResponseDTO getAllActiveUsers();
+//	public AjaxResponseDTO checkUserAvailability(String username);
+//	public AjaxResponseDTO getSecurityQuestionsForUser(String username);
 
 }

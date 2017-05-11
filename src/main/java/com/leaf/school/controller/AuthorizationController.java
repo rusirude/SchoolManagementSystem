@@ -5,6 +5,7 @@ package com.leaf.school.controller;
 
 import com.leaf.school.dto.SysUserDTO;
 import com.leaf.school.dto.common.AjaxResponseDTO;
+import com.leaf.school.dto.common.LoginDTO;
 import com.leaf.school.service.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,8 @@ public class AuthorizationController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxResponseDTO login(@RequestBody SysUserDTO sysUserDTO) {
-        return authorizationService.login(sysUserDTO);
+    public AjaxResponseDTO login(@RequestBody LoginDTO loginDTO) {
+        return authorizationService.login(loginDTO);
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.POST)

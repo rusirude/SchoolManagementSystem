@@ -5,10 +5,11 @@ package com.leaf.school.service;
 
 import com.leaf.school.dto.SysUserDTO;
 import com.leaf.school.dto.common.AjaxResponseDTO;
+import com.leaf.school.dto.common.LoginDTO;
 
 public interface AuthorizationService {
 
-    AjaxResponseDTO login(SysUserDTO sysUserDTO);
+    AjaxResponseDTO login(LoginDTO loginDTO);
 
     AjaxResponseDTO logout();
 }

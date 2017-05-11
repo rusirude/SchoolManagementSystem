@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "user_management.sys_screen")
 public class SysScreenEntity extends BaseEntity {
 
-    private Integer id;
+    private Long id;
     private String screenName;
     private String url;
     private Integer level;
@@ -18,11 +18,11 @@ public class SysScreenEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

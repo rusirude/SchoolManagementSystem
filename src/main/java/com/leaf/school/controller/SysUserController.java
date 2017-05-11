@@ -20,6 +20,6 @@ public class SysUserController {
     @RequestMapping(value = "/searchAllUsers", method = RequestMethod.POST)
     @ResponseBody
     public AjaxResponseDTO searchUser() {
-        return sysUserService.getAllActiveUsers();
+        return null;
     }
 }

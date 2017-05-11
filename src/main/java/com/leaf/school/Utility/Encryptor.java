@@ -16,7 +16,7 @@ public class Encryptor {
     private static final String ALGORITHM = "SHA-256";
     public static final String CHARSET = "UTF-8";
 
-    public String getHashCode(String inputValue) {
+    public static String getHashCode(String inputValue) {
         String hashValue = null;
         if (inputValue != null && !inputValue.isEmpty()) {
             try {

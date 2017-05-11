@@ -3,17 +3,20 @@ package com.leaf.school.serviceImpl;
  * @Author : Rusiru De Silva
  */
 
-import com.leaf.school.Utility.CommonConstant;
 import com.leaf.school.Utility.Encryptor;
 import com.leaf.school.dao.SysUserDAO;
 import com.leaf.school.dto.SysUserDTO;
 import com.leaf.school.dto.common.AjaxResponseDTO;
+import com.leaf.school.dto.common.LoginDTO;
 import com.leaf.school.dto.session.Session;
-import com.leaf.school.enums.ResponseCodeEnum;
+import com.leaf.school.enums.DefaultStatusCodeEnum;
+import com.leaf.school.enums.LoginResponseCodeEnum;
 import com.leaf.school.service.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service("AuthorizationService")
 public class AuthorizationServiceImpl implements AuthorizationService {
@@ -27,34 +30,36 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 
     @Override
     @Transactional
-    public AjaxResponseDTO login(SysUserDTO sysUserDTO) {
-        String code = ResponseCodeEnum.ERROR.getCode();
-        String message = "";
-        Object obj = null;
+    public AjaxResponseDTO login(LoginDTO loginDTO) {
+        String code = LoginResponseCodeEnum.ERROR.getCode();
         try {
-            SysUserDTO userDTO = sysUserDAO.getUserByUsername(sysUserDTO);
-            switch (userDTO.getStatusCode()) {
-                case CommonConstant.ACTIVE:
-                    if (userDTO.getPassword().equals(encryptor.getHashCode(sysUserDTO.getPassword())) & "Y".equals(userDTO.getFirstLogin())) {
-                        session.setUsername(userDTO.getUsername());
-                        code = ResponseCodeEnum.SUCCESS.getCode();
-                        message = CommonConstant.LOGIN_SUCCESS;
-                    } else if (userDTO.getPassword().equals(encryptor.getHashCode(sysUserDTO.getPassword()))) {
-                        session.setUsername(userDTO.getUsername());
-                        code = ResponseCodeEnum.SUCCESS.getCode();
-                        message = CommonConstant.LOGIN_SUCCESS;
-                    } else {
-                        message = CommonConstant.LOGIN_FAILD;
+            List<SysUserDTO> sysUserDTOs = sysUserDAO.getSysUserByUsername(loginDTO.getUsername().trim());
+            if (sysUserDTOs == null || sysUserDTOs.size() == 0) {
+                code = LoginResponseCodeEnum.LOGIN_FAILED.getCode();
+            } else if (sysUserDTOs.size() == 1 && "Y".equals(sysUserDTOs.get(0).getPasswordResetRequested())) {
+                code = LoginResponseCodeEnum.PASSWORD_RESET_REQUESTED.getCode();
+            } else if (sysUserDTOs.size() == 1 && DefaultStatusCodeEnum.DEACT.getCode().equals(sysUserDTOs.get(0).getStatusCode())) {
+                code = LoginResponseCodeEnum.ACCOUNT_LOCK.getCode();
+            } else if (sysUserDTOs.size() == 1 && DefaultStatusCodeEnum.ACTIVE.getCode().equals(sysUserDTOs.get(0).getStatusCode())) {
+                if (Encryptor.getHashCode(loginDTO.getPassword().trim()).equals(sysUserDTOs.get(0).getPassword().trim())) {
+                    switch (sysUserDTOs.get(0).getFirstLogin()) {
+                        case "Y":
+                            code = LoginResponseCodeEnum.FIRST_LOGIN.getCode();
+                            break;
+                        default:
+                            code = LoginResponseCodeEnum.LOGIN_SUCCESS.getCode();
                     }
-                    break;
-                case CommonConstant.DEACT:
-                    message = CommonConstant.LOGIN_SUCCESS_LOCK;
-                    break;
+                    session.setUsername(sysUserDTOs.get(0).getUsername().trim());
+                } else {
+                    code = LoginResponseCodeEnum.LOGIN_FAILED.getCode();
+                }
+            } else {
+                //todo Rusiru add log here
             }
         } catch (Exception e) {
             System.out.println(e);
         }
-        return new AjaxResponseDTO(code, message);
+        return new AjaxResponseDTO(code);
     }
 
     @Override

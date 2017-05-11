@@ -8,10 +8,10 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class SysUserQuestionEntityId implements Serializable {
+public class SysUserQuestionMapEntityId implements Serializable {
 
     private String username;
-    private Integer question;
+    private Long question;
 
     @Column(name = "username", nullable = false)
     public String getUsername() {
@@ -23,11 +23,11 @@ public class SysUserQuestionEntityId implements Serializable {
     }
 
     @Column(name = "question", nullable = false)
-    public Integer getQuestion() {
+    public Long getQuestion() {
         return question;
     }
 
-    public void setQuestion(Integer question) {
+    public void setQuestion(Long question) {
         this.question = question;
     }
 
@@ -52,10 +52,10 @@ public class SysUserQuestionEntityId implements Serializable {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof SysUserQuestionEntityId)) {
+        if (!(obj instanceof SysUserQuestionMapEntityId)) {
             return false;
         }
-        SysUserQuestionEntityId other = (SysUserQuestionEntityId) obj;
+        SysUserQuestionMapEntityId other = (SysUserQuestionMapEntityId) obj;
         if (username == null) {
             if (other.username != null) {
                 return false;

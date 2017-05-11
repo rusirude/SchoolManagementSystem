@@ -9,9 +9,11 @@ public class SysUserDTO extends BaseDTO {
     private String username;
     private String password;
     private String name;
+    private Long status;
     private String statusCode;
     private String statusDescription;
     private String firstLogin;
+    private String passwordResetRequested;
 
     public String getUsername() {
         return username;
@@ -37,6 +39,14 @@ public class SysUserDTO extends BaseDTO {
         this.name = name;
     }
 
+    public Long getStatus() {
+        return status;
+    }
+
+    public void setStatus(Long status) {
+        this.status = status;
+    }
+
     public String getStatusCode() {
         return statusCode;
     }
@@ -59,5 +69,13 @@ public class SysUserDTO extends BaseDTO {
 
     public void setFirstLogin(String firstLogin) {
         this.firstLogin = firstLogin;
+    }
+
+    public String getPasswordResetRequested() {
+        return passwordResetRequested;
+    }
+
+    public void setPasswordResetRequested(String passwordResetRequested) {
+        this.passwordResetRequested = passwordResetRequested;
     }
 }

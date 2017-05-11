@@ -13,7 +13,5 @@ import com.leaf.school.dto.common.DataTableResponseDTO;
 public interface SysRoleService {
 	AjaxResponseDTO saveSysRole(SysRoleDTO sysRoleDTO);
 	AjaxResponseDTO updateSysRole(SysRoleDTO sysRoleDTO);
-	List<SysRoleDTO> getAllRoles();
-
 	DataTableResponseDTO getRolesForDataTable(DataTableRequestDTO dataTableRequestDTO);
 }

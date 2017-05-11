@@ -19,7 +19,7 @@ public class SecurityQuestionServiceImpl implements SecurityQuestionService{
 	@Override
 	@Transactional
 	public List<SecurityQuestionDTO> getAllSecurityQuestions() {		
-		return securityQuestionDAO.getAllSecurityQuestions();
+		return null;
 	}
 	
 
